@@ -1,78 +1,94 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f5f7fb">
-  <meta name="description" content="2026年11月11日个人学习课程表，可查看并使用 ICS URL 订阅到支持的手机日历。">
-  <title>我的学习课程表 · 2026年11月11日</title>
-  <style>
-    :root{--bg:#f5f7fb;--ink:#172238;--muted:#6c788b;--line:#e6eaf2;--shadow:0 16px 48px rgba(32,54,92,.07)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.5}
-    .shell{max-width:1080px;margin:auto;padding:26px 24px 78px}
-    .navbar{display:flex;align-items:center;justify-content:space-between;padding:2px 2px 28px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em;font-size:17px}.brand-mark{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:#253c70;color:white;font-size:20px}.tag{border:1px solid #dae3f0;border-radius:30px;padding:6px 12px;color:#61738f;font-size:12px;background:white;font-weight:700}
-    .hero{border-radius:27px;padding:36px 40px;background:linear-gradient(125deg,#243765,#38558d 66%,#4f78a9);color:white;position:relative;overflow:hidden;box-shadow:0 20px 45px rgba(44,67,110,.16)}
-    .hero:after{content:"";position:absolute;width:310px;height:310px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-80px;top:-100px;box-shadow:0 0 0 45px rgba(255,255,255,.035),0 0 0 95px rgba(255,255,255,.025)}
-    .eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:12px;color:#c6d8fc;font-weight:700}.hero h1{margin:10px 0 7px;font-size:clamp(28px,4.5vw,40px);line-height:1.25;letter-spacing:-.03em}.hero p{font-size:15px;color:#e0e9fb;margin:0}.chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:29px}.chip{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);border-radius:12px;padding:10px 15px;min-width:104px}.chip b{display:block;font-size:19px}.chip small{color:#d5e4fd;font-size:11px}
-    .content{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(265px,.85fr);align-items:start;gap:22px;margin-top:27px}
-    .panel{background:white;border:1px solid #ebeff5;border-radius:24px;box-shadow:var(--shadow)}.main-panel{padding:25px 28px 26px}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:15px;margin-bottom:19px}.panel-head h2,.guide h2{font-size:20px;margin:0;letter-spacing:-.02em}.panel-head p{font-size:13px;margin:4px 0 0;color:var(--muted)}.week{background:#f0f4fa;border-radius:10px;padding:8px 10px;color:#50617f;font-weight:700;font-size:12px;white-space:nowrap}
-    .timeline{padding:0;margin:0;list-style:none}.timeline-item{display:grid;grid-template-columns:90px minmax(0,1fr);column-gap:12px;position:relative;margin:0 0 10px}.timeline-item:last-child{margin-bottom:0}.time{color:#263756;font-weight:700;font-size:13px;padding:13px 0 0;display:flex;flex-direction:column;line-height:1.38;gap:4px;font-variant-numeric:tabular-nums}.time span:last-child{color:#929bad;font-weight:500;font-size:12px}
-    .event,.slot{border-radius:14px;display:flex;align-items:center;gap:12px;padding:14px 14px;border:1px solid transparent;min-height:78px}.event-icon,.slot-icon{flex:none;border-radius:12px;display:grid;place-items:center;width:40px;height:40px;font-size:22px;background:rgba(255,255,255,.75)}.event-copy,.slot-copy{min-width:0;flex:1}.event h3{font-size:14px;margin:0;font-weight:750;line-height:1.4}.event p,.slot p{font-size:12px;color:#758094;margin:4px 0 0}.event-arrow{font-size:22px;align-self:center;opacity:.26}.language{background:#edf3ff;border-color:#dbe7ff}.research{background:#ecf7f5;border-color:#d8eeea}.rest{background:#fff3e9;border-color:#fbe5d1}.life{background:#f4effd;border-color:#eae0f8}.fitness{background:#fff0ef;border-color:#fcdddd}.slot{border:1px dashed #d8dee8;background:#fafbfe;min-height:58px;padding:9px 14px}.slot-icon{background:#eef1f5;font-size:19px}.slot strong{font-size:13px;color:#778295}
-    .side{display:flex;flex-direction:column;gap:16px}.guide{padding:23px}.guide h2{font-size:18px}.guide .sub{font-size:12px;color:var(--muted);margin:7px 0 16px}.urlbox{border:1px solid #e3e8f0;background:#f7f9fc;border-radius:12px;padding:14px 12px;margin-bottom:12px}.urlbox label{font-size:11px;color:#7b879b;font-weight:800;letter-spacing:.02em;display:block;margin-bottom:7px}.urlbox code{display:block;font-size:12px;line-height:1.6;overflow-wrap:anywhere;color:#37507d}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:11px;padding:13px 10px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;text-align:center;display:grid;place-items:center}.primary{background:#31538e;color:white}.secondary{background:#eaf0fa;color:#34548a}.btn:focus-visible{outline:3px solid #8facdf;outline-offset:2px}.steps{padding-left:20px;margin:19px 0 0;color:#53617b;font-size:12px}.steps li{padding-left:2px;margin:10px 0;line-height:1.65}.steps b{color:#253651}.fineprint{padding:15px 17px;background:#fefcf5;border:1px solid #eee9d3;border-radius:15px;color:#7b7159;font-size:12px;line-height:1.7}.fineprint strong{display:block;color:#6d5d32;margin-bottom:2px}.foot{font-size:12px;color:#91a0b1;text-align:center;margin:29px auto 0;max-width:660px}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#20314e;color:white;padding:11px 19px;border-radius:11px;font-size:13px;box-shadow:0 12px 35px rgba(0,0,0,.15);z-index:9;display:none}
-    @media(max-width:760px){.shell{padding:17px 14px 50px}.navbar{padding-bottom:17px}.hero{padding:28px 24px}.hero h1{font-size:29px}.chips{gap:8px}.chip{min-width:90px;padding:8px 11px}.content{grid-template-columns:1fr;gap:16px;margin-top:16px}.main-panel{padding:22px 14px 19px}.panel-head{padding:0 5px}.timeline-item{grid-template-columns:71px minmax(0,1fr);gap:8px}.event{min-height:75px;padding:10px;gap:9px}.event-icon,.slot-icon{width:37px;height:37px;font-size:20px}.event h3{font-size:13px}.time{font-size:12px}.time span:last-child{font-size:11px}.event-arrow{display:none}.slot{padding:8px 10px}.guide{padding:22px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
-</head>
-<body>
-<div class="shell">
-  <nav class="navbar" aria-label="站点"><div class="brand"><span class="brand-mark" aria-hidden="true">日</span><span>MY STUDY PLAN</span></div><span class="tag">单日试运行</span></nav>
-  <header class="hero">
-    <div class="eyebrow">WEDNESDAY · 11 NOV 2026</div>
-    <h1>今天的每一小时，<br>都有自己的方向。</h1>
-    <p>2026 年 11 月 11 日 · 星期三 · 个人学习安排</p>
-    <div class="chips"><div class="chip"><b>11</b><small>项计划任务</small></div><div class="chip"><b>07:30</b><small>开始时间</small></div><div class="chip"><b>22:30</b><small>结束时间</small></div></div>
-  </header>
-  <div class="content">
-    <main class="panel main-panel" id="schedule"><div class="panel-head"><div><h2>每日课程表</h2><p>按时间顺序排列 · 仅 11 月 11 日</p></div><div class="week">周三 / WED</div></div><ol class="timeline"><li class="timeline-item"><div class="time"><span>07:30</span><span>08:30</span></div><div class="event language"><div class="event-icon" aria-hidden="true">📖</div><div class="event-copy"><div class="event-head"><h3>回顾单词</h3></div><p>建立词汇记忆</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>08:30</span><span>11:30</span></div><div class="event research"><div class="event-icon" aria-hidden="true">📑</div><div class="event-copy"><div class="event-head"><h3>论文阅读与推导</h3></div><p>阅读并推导 1–2 篇论文</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>11:30</span><span>12:30</span></div><div class="event language"><div class="event-icon" aria-hidden="true">✍️</div><div class="event-copy"><div class="event-head"><h3>Passage 2</h3></div><p>专项学习时间</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>12:30</span><span>13:30</span></div><div class="event rest"><div class="event-icon" aria-hidden="true">📺</div><div class="event-copy"><div class="event-head"><h3>看综艺</h3></div><p>放松与休息</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>13:30</span><span>15:30</span></div><div class="event language"><div class="event-icon" aria-hidden="true">🎧</div><div class="event-copy"><div class="event-head"><h3>CTE · Writing / Listening</h3></div><p>写作与听力训练</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>15:30</span><span>16:00</span></div><div class="event life"><div class="event-icon" aria-hidden="true">🍳</div><div class="event-copy"><div class="event-head"><h3>Cooking</h3></div><p>做饭时间</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>16:00</span><span>17:00</span></div><div class="event language"><div class="event-icon" aria-hidden="true">✍️</div><div class="event-copy"><div class="event-head"><h3>Passage 2</h3></div><p>专项学习时间</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>17:00</span><span>19:00</span></div><div class="event fitness"><div class="event-icon" aria-hidden="true">💪</div><div class="event-copy"><div class="event-head"><h3>健身 · 练肩</h3></div><p>肩部训练</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item free"><div class="time"><span>19:00</span><span>19:30</span></div><div class="slot"><div class="slot-icon">☕</div><div class="slot-copy"><strong>自由时间</strong><p>未安排任务 · 可以休息或调整</p></div></div></li>
-<li class="timeline-item"><div class="time"><span>19:30</span><span>20:30</span></div><div class="event language"><div class="event-icon" aria-hidden="true">✍️</div><div class="event-copy"><div class="event-head"><h3>Passage 2</h3></div><p>专项学习时间</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>20:30</span><span>22:00</span></div><div class="event research"><div class="event-icon" aria-hidden="true">📚</div><div class="event-copy"><div class="event-head"><h3>Passage Study</h3></div><p>阅读 / 深入学习</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li>
-<li class="timeline-item"><div class="time"><span>22:00</span><span>22:30</span></div><div class="event life"><div class="event-icon" aria-hidden="true">📝</div><div class="event-copy"><div class="event-head"><h3>准备第二天内容</h3></div><p>检查并安排明日任务</p></div><span class="event-arrow" aria-hidden="true">•</span></div></li></ol></main>
-    <aside class="side">
-      <section class="panel guide"><h2>📲 在 OPPO 上订阅</h2><p class="sub">用下方日历 URL 将课程表添加到日历</p>
-        <div class="urlbox"><label>你的日历订阅地址（.ics）</label><code id="feed-url" aria-live="polite">发布网站后会自动显示</code></div>
-        <div class="actions"><button class="btn primary" type="button" id="copy">复制 URL</button><a class="btn secondary" href="./schedule.ics" download="schedule.ics">下载日历文件</a></div>
-        <ol class="steps"><li>先将 <b>index.html</b> 和 <b>schedule.ics</b> 上传到免费网页空间。</li><li>打开 OPPO 系统日历，找到 <b>添加日历 → URL 日历</b>（不同机型名称可能不同）。</li><li>粘贴上方 URL，点击订阅或添加，查看 11 月 11 日的安排。</li></ol>
-      </section>
-      <div class="fineprint"><strong>📌 小提醒</strong>订阅 URL 可以随着源文件更新而同步；直接“下载/导入 .ics”一般只会导入一次。具体同步速度和提醒功能取决于你的日历 App。</div>
-    </aside>
-  </div>
-  <div class="foot">本计划按手机当地时间理解。19:00–19:30 保留自由时间。页面不收集个人信息；公开发布后，知道网址的人可以查看计划。</div>
-</div>
-<div role="status" id="toast"></div>
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8fafc">
+<title>我的学习课程表 · 11月11日</title><meta name="description" content="2026年11月11日个人学习课程表：11项学习与生活任务。可订阅日历 URL。">
+<style>
+:root{--bg:#f7f9fd;--text:#24314b;--muted:#7d8ba1;--border:#e6eaf2;--shadow:0 12px 35px rgba(29,45,76,.06);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;margin:0;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}a{color:inherit}.shell{max-width:1090px;padding:24px 24px 70px;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:850;letter-spacing:.08em}.brand-symbol{width:35px;height:35px;border-radius:12px;background:#28426e;color:white;display:grid;place-items:center;font-size:20px}.mark{border:1px solid #dbe3f0;background:#fff;border-radius:99px;padding:6px 12px;color:#637891;font-size:12px;font-weight:750}
+.hero{background:linear-gradient(115deg,#2c416b,#395c91 60%,#5679a6);color:white;border-radius:26px;padding:32px 39px;position:relative;overflow:hidden;box-shadow:0 14px 38px rgba(38,65,102,.16)}.hero:after{content:"";position:absolute;width:310px;height:310px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-85px;top:-120px;box-shadow:0 0 0 50px rgba(255,255,255,.03),0 0 0 105px rgba(255,255,255,.027);pointer-events:none}.hero>*{position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:.18em;color:#d2e2fc;font-weight:750}.hero h1{font-size:clamp(28px,4vw,41px);letter-spacing:-.035em;margin:10px 0 8px;line-height:1.3}.hero p{font-size:14px;color:#dfe8f7;margin:0}.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.stat{min-width:108px;border-radius:13px;padding:8px 13px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.13)}.stat b{font-size:21px;display:block;line-height:1.25}.stat small{font-size:11px;color:#e1ebfc}
+.layout{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(280px,.80fr);gap:19px;align-items:start;margin-top:20px}.panel{background:white;border:1px solid var(--border);box-shadow:var(--shadow);border-radius:var(--radius)}.main{padding:23px 22px 25px}.sectionhead{display:flex;align-items:flex-start;justify-content:space-between;gap:13px;margin-bottom:20px}.sectionhead h2,.boxpanel h2{margin:0;font-size:19px;letter-spacing:-.03em}.sectionhead p{color:var(--muted);font-size:12px;margin:5px 0 0}.weekday{font-size:12px;font-weight:800;color:#5874a2;background:#edf3fb;border-radius:10px;padding:8px 11px;white-space:nowrap}.legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:0 0 13px}.legend span{font-size:11px;color:#8793a3;border-radius:9px;padding:4px 8px;background:#f6f8fb}.legend span:first-child{color:#526b91;background:#edf3fb}
+.timeline{list-style:none;margin:0;padding:0}.timeline-item{display:grid;grid-template-columns:80px minmax(0,1fr);gap:11px;margin:0 0 11px}.time{display:flex;flex-direction:column;align-items:flex-start;padding:15px 0 0 4px;font-variant-numeric:tabular-nums;line-height:1.35}.time strong{font-size:13px;color:#304463;letter-spacing:.01em}.time span{font-size:12px;color:#9aa6b7;margin-top:6px}.event{position:relative;min-height:80px;padding:13px 14px 13px 19px;border:1px solid var(--stroke);background:var(--tint);border-radius:16px;display:flex;align-items:center;gap:12px;transition:transform .15s ease,box-shadow .15s ease;overflow:hidden}.event:before{content:"";width:4px;position:absolute;top:14px;bottom:14px;left:0;border-radius:5px;background:var(--accent)}.event:hover{transform:translateY(-1px);box-shadow:0 7px 17px rgba(29,45,76,.07)}.symbol{height:43px;width:43px;display:grid;place-items:center;background:rgba(255,255,255,.84);font-size:23px;border-radius:13px;flex:none;box-shadow:0 3px 12px rgba(30,48,80,.04)}.event-body{min-width:0;flex:1}.event-top{display:flex;align-items:center;justify-content:space-between;gap:6px}.event h3{font-size:14px;font-weight:780;margin:0;line-height:1.4;letter-spacing:-.01em}.event p{margin:5px 0 0;color:#738298;font-size:12px}.tag.tiny{font-size:10px;white-space:nowrap;flex-shrink:0;background:#ffffffa8;border:1px solid #ffffffb3;color:var(--label);padding:3px 7px;border-radius:8px;font-weight:750}
+.language{--tint:#ecf3ff;--stroke:#dde8fc;--accent:#5e8ed9;--label:#4871af}.research{--tint:#e9f6f2;--stroke:#d8eae5;--accent:#53ab95;--label:#378775}.rest{--tint:#fff3e8;--stroke:#f5e4d3;--accent:#eeb47b;--label:#ae7a49}.life{--tint:#f4effd;--stroke:#e8dff7;--accent:#ae91d6;--label:#866aac}.fitness{--tint:#fff0ef;--stroke:#f8dfdd;--accent:#ec8780;--label:#c16d65}
+.open-slot{display:flex;gap:10px;align-items:center;min-height:65px;padding:10px 12px;border-radius:16px;background:#fafbfe;border:1px dashed #d9e0ec;color:#8693a6;min-width:0}.slot-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#eef2f6;font-size:19px}.open-slot>span:nth-child(2){display:flex;flex-direction:column;min-width:0}.open-slot strong{font-size:12px;font-weight:760;color:#7b8798}.open-slot small{font-size:11px;margin-top:2px;color:#a1aaba}.open-label{margin-left:auto;font-size:10px;background:#f0f3f8;border-radius:8px;padding:3px 7px;white-space:nowrap}
+.sidebar{display:flex;flex-direction:column;gap:16px}.boxpanel{padding:24px 22px}.boxpanel p{font-size:12px;color:var(--muted);margin:6px 0 17px}.urlcard{padding:13px;border-radius:13px;background:#f6f8fc;border:1px solid #e7ebf2}.urlcard small{color:#8190a3;font-weight:750;font-size:11px}.urlcard code{display:block;color:#355582;font-size:12px;line-height:1.55;overflow-wrap:anywhere;margin-top:6px}.buttons{display:flex;gap:8px;margin-top:12px}.btn{flex:1;border:0;text-align:center;padding:12px 10px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;text-decoration:none}.btn-primary{color:white;background:#315f9c}.btn-light{color:#3f6494;background:#e9f1fb}.btn:focus-visible{outline:3px solid #8bb3e8;outline-offset:2px}.hint{font-size:12px;color:#7e8ca1;line-height:1.8}.hint b{color:#425975}.hint ol{padding-left:18px;margin-bottom:0}.hint li{padding-left:3px;margin-bottom:8px}.callout{padding:18px 20px;border:1px solid #eee6d6;background:#fffcf5;border-radius:18px;font-size:12px;line-height:1.75;color:#847557}.callout strong{display:block;color:#7e6945;margin-bottom:5px}.footer{text-align:center;color:#a1adbd;font-size:11px;margin-top:23px}.toast{position:fixed;bottom:27px;left:50%;transform:translateX(-50%);color:#fff;background:#243b5f;padding:12px 17px;border-radius:12px;box-shadow:0 12px 28px #16243e33;font-size:12px;display:none;z-index:20;max-width:90%;text-align:center}
+@media(max-width:750px){.shell{padding:17px 13px 46px}.topbar{margin-bottom:14px}.hero{padding:25px 21px;border-radius:22px}.hero h1{font-size:29px}.hero p{font-size:12px}.stats{margin-top:19px;gap:8px}.stat{min-width:86px;padding:8px 10px}.stat b{font-size:18px}.layout{grid-template-columns:1fr;margin-top:14px;gap:15px}.main{padding:19px 12px 19px}.sectionhead{padding:0 6px}.sectionhead h2{font-size:18px}.weekday{font-size:11px}.timeline-item{grid-template-columns:68px minmax(0,1fr);gap:7px;margin-bottom:9px}.time{padding:12px 0 0 3px}.time strong{font-size:12px}.time span{font-size:11px;margin-top:5px}.event{padding:11px 10px 11px 15px;gap:8px;min-height:74px;border-radius:14px}.event:before{top:12px;bottom:12px;width:3px}.symbol{width:36px;height:36px;border-radius:10px;font-size:20px}.event h3{font-size:12.6px}.event p{font-size:11px;margin-top:4px}.tag.tiny{font-size:9px;padding:3px 5px}.open-slot{padding:8px;min-height:57px;gap:6px}.open-label{display:none}.boxpanel{padding:22px 18px}.legend{padding:0 4px}}
+@media(max-width:350px){.event-top .tiny{display:none}.event h3{font-size:12px}.symbol{height:32px;width:32px}}
+@media(prefers-reduced-motion:reduce){.event{transition:none}html{scroll-behavior:auto}}
+</style></head>
+<body><div class="shell">
+<nav class="topbar"><div class="brand"><span class="brand-symbol" aria-hidden="true">日</span><span>MY STUDY PLAN</span></div><span class="mark">单日试运行 · V2</span></nav>
+<header class="hero"><div class="eyebrow">WEDNESDAY · 11 NOV 2026</div><h1>把每一段时间，<br>留给重要的事。</h1><p>11 月 11 日 · 星期三 · 学习与生活计划</p><div class="stats"><span class="stat"><b>11</b><small>项学习与生活日程</small></span><span class="stat"><b>07:30</b><small>开始时间</small></span><span class="stat"><b>22:30</b><small>结束时间</small></span></div></header>
+<div class="layout"><main class="panel main" id="schedule"><div class="sectionhead"><div><h2>📋 今日时间表</h2><p>不赶时间，按自己的节奏完成</p></div><span class="weekday">11.11 · 周三</span></div><div class="legend"><span>📖 学习</span><span>📑 研究</span><span>☕ 休息</span><span>💪 健身</span></div><ol class="timeline">
+<li class="timeline-item">
+      <div class="time" aria-label="07:30 至 08:30"><strong>07:30</strong><span>08:30</span></div>
+      <article class="event language"><div class="symbol" aria-hidden="true">📖</div>
+      <div class="event-body"><div class="event-top"><h3>回顾单词</h3><span class="tag tiny">单词</span></div>
+      <p>建立词汇记忆</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="08:30 至 11:30"><strong>08:30</strong><span>11:30</span></div>
+      <article class="event research"><div class="symbol" aria-hidden="true">📑</div>
+      <div class="event-body"><div class="event-top"><h3>论文阅读与推导</h3><span class="tag tiny">论文</span></div>
+      <p>阅读并推导 1–2 篇论文</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="11:30 至 12:30"><strong>11:30</strong><span>12:30</span></div>
+      <article class="event language"><div class="symbol" aria-hidden="true">✍️</div>
+      <div class="event-body"><div class="event-top"><h3>Passage 2</h3><span class="tag tiny">学习</span></div>
+      <p>专项学习时间</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="12:30 至 13:30"><strong>12:30</strong><span>13:30</span></div>
+      <article class="event rest"><div class="symbol" aria-hidden="true">📺</div>
+      <div class="event-body"><div class="event-top"><h3>看综艺</h3><span class="tag tiny">休息</span></div>
+      <p>放松与休息</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="13:30 至 15:30"><strong>13:30</strong><span>15:30</span></div>
+      <article class="event language"><div class="symbol" aria-hidden="true">🎧</div>
+      <div class="event-body"><div class="event-top"><h3>CTE · Writing / Listening</h3><span class="tag tiny">训练</span></div>
+      <p>写作与听力训练</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="15:30 至 16:00"><strong>15:30</strong><span>16:00</span></div>
+      <article class="event life"><div class="symbol" aria-hidden="true">🍳</div>
+      <div class="event-body"><div class="event-top"><h3>Cooking</h3><span class="tag tiny">生活</span></div>
+      <p>做饭时间</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="16:00 至 17:00"><strong>16:00</strong><span>17:00</span></div>
+      <article class="event language"><div class="symbol" aria-hidden="true">✍️</div>
+      <div class="event-body"><div class="event-top"><h3>Passage 2</h3><span class="tag tiny">学习</span></div>
+      <p>专项学习时间</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="17:00 至 19:00"><strong>17:00</strong><span>19:00</span></div>
+      <article class="event fitness"><div class="symbol" aria-hidden="true">💪</div>
+      <div class="event-body"><div class="event-top"><h3>健身 · 练肩</h3><span class="tag tiny">健身</span></div>
+      <p>肩部训练</p></div></article>
+    </li>
+<li class="timeline-item free"><div class="time"><strong>19:00</strong><span>19:30</span></div>
+          <div class="open-slot"><span class="slot-icon" aria-hidden="true">☕</span><span><strong>自由时间</strong><small>保留空档 · 自由调整</small></span><span class="open-label">未安排</span></div></li>
+<li class="timeline-item">
+      <div class="time" aria-label="19:30 至 20:30"><strong>19:30</strong><span>20:30</span></div>
+      <article class="event language"><div class="symbol" aria-hidden="true">✍️</div>
+      <div class="event-body"><div class="event-top"><h3>Passage 2</h3><span class="tag tiny">学习</span></div>
+      <p>专项学习时间</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="20:30 至 22:00"><strong>20:30</strong><span>22:00</span></div>
+      <article class="event research"><div class="symbol" aria-hidden="true">📚</div>
+      <div class="event-body"><div class="event-top"><h3>Passage Study</h3><span class="tag tiny">研读</span></div>
+      <p>阅读 / 深入学习</p></div></article>
+    </li>
+<li class="timeline-item">
+      <div class="time" aria-label="22:00 至 22:30"><strong>22:00</strong><span>22:30</span></div>
+      <article class="event life"><div class="symbol" aria-hidden="true">📝</div>
+      <div class="event-body"><div class="event-top"><h3>准备第二天内容</h3><span class="tag tiny">规划</span></div>
+      <p>检查并安排明日任务</p></div></article>
+    </li>
+</ol></main><aside class="sidebar"><section class="panel boxpanel"><h2>📲 同步到 OPPO 日历</h2><p>同一个链接可以在支持 URL 订阅的日历里使用。</p><div class="urlcard"><small>日历订阅 URL · schedule.ics</small><code id="url">发布后显示完整地址</code></div><div class="buttons"><button class="btn btn-primary" type="button" id="copy">复制 URL</button><a class="btn btn-light" href="./schedule.ics" download="schedule.ics">下载文件</a></div><div class="hint"><ol><li>先把新版 <b>index.html</b> 与 <b>schedule.ics</b> 覆盖上传到原 GitHub 仓库。</li><li>网址与文件名保持不变，原有 URL 订阅可在同步后读取新版。</li><li>如果之前是手动导入文件，则不会自动更新，需留意重复事件。</li></ol></div></section><section class="callout"><strong>✨ 小设计说明</strong>网页中的彩色卡片和大图标只用于展示；OPPO 系统日历不会照搬这些样式。新版日历文件把 emoji 加入事件标题，手机能否显示取决于日历应用的字体及标题处理方式。</section></aside></div>
+<div class="footer">仅 2026 年 11 月 11 日一天 · 19:00–19:30 留空 · 日程使用设备当地时间 · 公开链接可被访问</div></div><div class="toast" id="toast" role="status"></div>
 <script>
-(function(){
-  const feed=document.getElementById('feed-url');
-  const copy=document.getElementById('copy');
-  const published=(location.protocol==='https:'||location.protocol==='http:');
-  const url=published?new URL('./schedule.ics',location.href).href:'';
-  if(url) feed.textContent=url;
-  function toast(s){const el=document.getElementById('toast');el.textContent=s;el.style.display='block';setTimeout(()=>{el.style.display='none'},3300)}
-  copy.addEventListener('click',async()=>{
-    if(!url){toast('请先发布网站，才能获得公开的 URL');return}
-    try{
-      if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(url)}
-      else{const input=document.createElement('textarea');input.value=url;document.body.append(input);input.select();const ok=document.execCommand('copy');input.remove();if(!ok)throw Error('copy failed')}
-      toast('订阅 URL 已复制，可粘贴到 OPPO 日历');
-    }catch(e){toast('复制失败，请长按上方 URL 手动复制')}
-  });
-})();
-</script>
-</body></html>
+(()=>{const display=document.getElementById('url');const btn=document.getElementById('copy');const toastEl=document.getElementById('toast');const live=/^https?:$/.test(window.location.protocol);const url=live?new URL('./schedule.ics',window.location.href).href:'';display.textContent=url||'本地预览无公网地址';function toast(msg){toastEl.textContent=msg;toastEl.style.display='block';setTimeout(()=>toastEl.style.display='none',2900)}btn.addEventListener('click',async()=>{if(!url){toast('请先发布到 GitHub Pages');return}try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url)}else{const t=document.createElement('textarea');t.value=url;document.body.append(t);t.select();if(!document.execCommand('copy'))throw new Error('copy');t.remove()}toast('已复制日历 URL')}catch(e){toast('请长按上方地址手动复制')}})})();
+</script></body></html>
